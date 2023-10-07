@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <style>
+        .container{
+            text-align: right;
+            background-color: aliceblue;
+            align-content: center;
+            border-radius: 5px;
+            width: 300px;
+            padding:40px 10px 40px 10px;
+            margin: 10% 40%;
+        }
+        body{
+            background-color: rgb(103, 103, 103);
+        }
+        .btn{
+            padding:20px 30px;
+            width: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"> 
+        <center><h2>SignUp</h2></center>
+        <form method="post" name="myform">
+        <table >
+            <tr>
+                <td>
+                    UserEmail:
+                </td>
+                <td>
+                    <input type="email" id="uemail"  placeholder="abc@gmail.com" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Password:
+                </td>
+                <td>
+                    <input type="password" id="upass" required>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <div class="btn">
+        <input type="button" value="SignUp" onclick="validate()">
+    </div>
+    <script>
+        function validate(){
+            const email = document.getElementById("uemail").value;
+            const pass = document.getElementById("upass").value;
+            //window.alert(email+" "+pass);
+            if(checkMail(email)){
+                if(pass.length< 8){
+                alert("Password must be maximum 8 characters");
+                return false;
+                }
+                var pwd=/^(?=.*[a-z])/;
+                var pwd1=/^(?=.*[A-Z])/;
+                var pwd2=/^(?=.*[0-9])/;
+                if (pwd.test(pass) == false) {
+                    alert("Password Should contain atleast One lowerCase letter");
+                    return false;
+                }
+
+                if (pwd1.test(pass) == false) {
+                    alert("Password Should contain atleast One UpperCase letter");
+                    return false;
+                }
+                if (pwd2.test(pass) == false) {
+                    alert("Password Should contain atleast One Number");
+                    return false;
+                }
+                else{
+                    alert("Signin Succefully....");
+                    return true;
+                }
+            }
+                
+        }
+
+            function checkMail(email){
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
+            return true;
+            }
+            alert("You have entered an invalid email address!")
+            return false;
+        }
+        </script>
+</body>
+</html>
